@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block body %}
+<div class="contact">
+    <h1>
+        Contact us
+    </h1>
+    <form action="/contact/" method="post">
+        {% csrf_token %}
+        <div>
+        <input type="text" name="name" placeholder="First name" required>
+        <input type="text" name="lastName" placeholder="Last name" required>
+    </div> <div>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="mobile" placeholder="Mobile no. " required>
+    </div>
+        <textarea name="message" cols="30" rows="10" placeholder="Your massage" required></textarea>
+        <button type="submit" class="contactButton">submit</button>
+    </form>
+    {% for message in messages  %}
+      <b class="CM">{{message}}</b>
+    {% endfor %}
+</div>
+
+{% endblock body %}

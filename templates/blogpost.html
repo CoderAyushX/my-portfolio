@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Blogpost{% endblock title %}
+{% block body %}
+<h1 class="blogsHeading">{{post.title}}</h1>
+<div class="blogpost">
+    <p>{{post.date}}</p>
+    <p class="blogpostContent">{{post.content}}</p>
+</div>
+<form action="/blog/comment/" method="post">
+    {% csrf_token %}
+    <input type="text" class="comment" placeholder="Comment" name="comment">
+    <input type="hidden" name="Sno" value="{{post.id}}">
+    <button type="submit" class="commentSubmit">Post</button>
+</form>
+<div class="commentsection">
+    {% for comments in comment reversed%}
+
+    <div class="commentBox">
+        <div class="commentHead">
+            <div>
+                <img src="https://i.postimg.cc/FsWkPPFp/avatardefault-92824.png" alt="user img">
+            </div>
+            <div class="userDetails">
+                <p>{{comments.user.username}}</p> 
+                <p>{{comments.timestamp}}</p>
+
+            </div>
+        </div>
+        <div>
+            {{comments.comments}}
+
+        </div>
+
+    </div> 
+    {% endfor %}
+</div>
+{% endblock body %}

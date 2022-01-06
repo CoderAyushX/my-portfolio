@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>{% block title %}{% endblock title %} | Ayush blogs</title>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navHead">
+            <h1><a class="navheadH1" href="/">Ayush kumar</a></h1>
+
+        </div>
+        <div class="navList" id="navlist">
+          <label for="check" class='hamburger'>
+            <input type="checkbox" id="check" onclick="show()" />
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
+            <ul class="navItems" id="navItems">
+                <li><a href="/" >Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if user.is_authenticated  %}
+                <li><a href="/" class="login">Hello! {{user.first_name}} </a></li>
+                <li><a href="/logout" class="signup">logout</a></li>
+                {% else %}
+                <li><a href="/login" class="login">Login</a></li>
+                <li><a href="/signup" class="signup">Signup</a></li>
+                {% endif %}
+              
+            </ul>
+    
+        </div>
+    </nav>
+    {% block body %}{% endblock body %}
+    <footer>
+        <div class="main-content">
+          <div class="left box">
+            <h2>About us</h2>
+            <div class="content">
+              <p>Hey there! I am ayush and I am a developer for more than 6 months, I am
+                currently a student and learning about backend,frontend,
+                database. I am also intrested in app dev!</p>
+              <div class="social">
+                <a href="/"><span class="fab fa-facebook-f"></span></a>
+                <a href="/"><span class="fab fa-twitter"></span></a>
+                <a href="/"><span class="fab fa-instagram"></span></a>
+                <a href="/"><span class="fab fa-youtube"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="center box">
+            <h2>Address</h2>
+            <div class="content">
+              <div class="place">
+                <span class="fas fa-map-marker-alt"></span>
+                <span class="text">Jharkhand, INDIA</span>
+              </div>
+              <div class="phone">
+                <span class="fas fa-phone-alt"></span>
+                <span class="text">+91- 8210685150</span>
+              </div>
+              <div class="email">
+                <span class="fas fa-envelope"></span>
+                <span class="text">ayush@.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="right box">
+     
+            <div class="content       <h2>Contact us</h2>">
+              <form method="post" action="/contactme/">
+                {% csrf_token %}
+                <div class="email">
+                  <div class="text">Email *</div>
+                  <input type="email" name='gmail' required>
+                </div>
+                <div class="msg">
+                  <div class="text">Message *</div>
+                  <textarea rows="2" cols="25" name='message' required></textarea>
+                </div>
+                <div class="btn">
+                  <button type="submit">Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <center>
+            <span class="credit"> <a href="/">Ayush blogs</a> | </span>
+            <span class="far fa-copyright"></span><span> 2022 All rights reserved.</span>
+          </center>
+        </div>
+      </footer>
+      <script src="{% static 'main.js' %}"></script>
+</body>
+</html>
