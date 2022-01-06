@@ -6,6 +6,7 @@
     <p>{{post.date}}</p>
     <p class="blogpostContent">{{post.content}}</p>
 </div>
+<h1 class="commentTitle">Comments ({{comments.count}})</h1>
 <form action="/blog/comment/" method="post">
     {% csrf_token %}
     <input type="text" class="comment" placeholder="Comment" name="comment">

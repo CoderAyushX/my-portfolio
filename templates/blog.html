@@ -2,7 +2,7 @@
 {% block title %}Blogs{% endblock title %}
 {% block body %}
 <h1 class="blogsHeading">Ayush blogs</h1>
-{% for blog  in blogs %}
+{% for blog  in blogs reversed %}
 <div class="blog">
     <p> {{blog.date}}</p>
     <h1>{{blog.title}}</h1>

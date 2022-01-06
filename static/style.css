@@ -380,6 +380,11 @@ li{
   color: white;
   font-size: 28px;
 }
+.commentTitle{
+  font-size: 28px;
+  font-family: 'Poppins', sans-serif;
+  margin: 15px 0 25px 30px;
+}
 footer{
     position: relative;
     bottom: 0;
