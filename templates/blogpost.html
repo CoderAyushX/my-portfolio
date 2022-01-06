@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Blogpost{% endblock title %}
+{% block metaDescription %}{{post.content}}{% endblock metaDescription %}
 {% block body %}
 {% load humanize %}
 <h1 class="blogsHeading">{{post.title}}</h1>
