@@ -2,8 +2,7 @@ from django.contrib import auth,messages
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import blogs, blogpostComment, contactUs
-from .models import contactMe
+from .models import *
 # Create your views here.
 def index(request):    
     return render(request, 'index.html')
