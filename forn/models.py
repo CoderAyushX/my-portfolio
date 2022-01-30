@@ -9,6 +9,7 @@ class blogs(models.Model):
     date = models.DateTimeField( auto_now_add=True)
     title = models.CharField(max_length= 150)
     content = HTMLField()
+    contentView = models.TextField()
     slug = models.CharField(max_length=50)
     def __str__(self):
         return self.title
