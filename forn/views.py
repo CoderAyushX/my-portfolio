@@ -87,7 +87,7 @@ def comment(request):
         return redirect('/signup')
     if request.method == "POST":
          comment = request.POST.get('comment')
-         user = request.user or "anyomous"
+         user = request.user
          postno  =  request.POST.get('Sno')
          post = blogs.objects.get(id = postno)
          comment = blogpostComment(comments= comment, user= user, post= post)

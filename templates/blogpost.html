@@ -224,7 +224,7 @@
 <form action="/blog/comment/" method="post">
   {% csrf_token %}
   <input type="text" class="comment" placeholder="Comment" name="comment">
-  <input type="hidden" name="Sno" value="{{posts.post_id}}">
+  <input type="hidden" name="Sno" value="{{posts.id}}">
   <button type="submit" class="commentSubmit">Post</button>
 </form>
 <div class="commentsection">
