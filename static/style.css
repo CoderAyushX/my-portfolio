@@ -750,6 +750,7 @@ footer{
      width: 45%;
      transform: translateX(-305px);
      transition: .5s all linear;
+     z-index: 999;
 
     }
     .show{
@@ -762,6 +763,7 @@ footer{
      width: 45%;
      transform: translateX(0px);
      transition: .5s all linear;
+     z-index: 999;
     }
     .navItems li{
       display: block;
