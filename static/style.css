@@ -651,7 +651,7 @@ footer{
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: none;
     cursor: pointer;
-    z-index: 999;
+    z-index: 9;
             -webkit-tap-highlight-color: transparent;
   }
   #progress-value {

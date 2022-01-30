@@ -272,7 +272,7 @@
       document.documentElement.clientHeight;
     let scrollValue = Math.round((pos * 100) / calcHeight);
 
-    scrollProgess.style.background = `conic-gradient(#03CC65 ${scrollValue}%, #111 ${scrollValue + 2}%)`;
+    scrollProgess.style.background = `conic-gradient(#03CC65 ${scrollValue}%, #111 ${scrollValue}%)`;
 
     if (pos > 100) {
       scrollProgess.style.display = "grid";
