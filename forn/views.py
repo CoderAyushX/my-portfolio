@@ -30,7 +30,7 @@ def contact(request):
     return render(request, 'contact.html')
 def blog(request):
     blog = Blogs.objects.all()
-    return render(request, 'blog.html' , {"Blogs": blog})
+    return render(request, 'blog.html' , {"blogs": blog})
 def signup(request):
     if request.method == 'POST':
         username = request.POST['fullname']
