@@ -341,7 +341,7 @@ li{
   font-size: 14px;
   padding-top: 8px;
 }
-.blog img{
+.blog img, .blog h1, .blog h2 , .blog h3{
   display: none;
 }
 .blogreadmore{
