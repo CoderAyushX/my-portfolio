@@ -5,7 +5,7 @@ from django.utils.timezone import now
 from tinymce.models import HTMLField
 
 # Create your models here.
-class blogs(models.Model):
+class Blogs(models.Model):
     date = models.DateTimeField( auto_now_add=True)
     title = models.CharField(max_length= 150)
     content = HTMLField()

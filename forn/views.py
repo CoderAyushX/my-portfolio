@@ -29,8 +29,8 @@ def contact(request):
         messages.info(request,"Message sent sucessfully")
     return render(request, 'contact.html')
 def blog(request):
-    blog = blogs.objects.all()
-    return render(request, 'blog.html' , {"blogs": blog})
+    blog = Blogs.objects.all()
+    return render(request, 'blog.html' , {"Blogs": blog})
 def signup(request):
     if request.method == 'POST':
         username = request.POST['fullname']
@@ -78,9 +78,9 @@ def logout(request):
     auth.logout(request)
     return redirect("/")
 def blogpost(request, slug):
-    post = blogs.objects.filter(slug= slug).first()
+    post = Blogs.objects.filter(slug= slug).first()
     comments = blogpostComment.objects.filter(post = post)
-    relatedPost = blogs.objects.all().exclude(id= post.id)[:4]
+    relatedPost = Blogs.objects.all().exclude(id= post.id)[:4]
     return render(request, 'blogpost.html', {'posts':post, 'comment': comments, 'relatedpost': relatedPost})
 
 def comment(request):
@@ -90,7 +90,7 @@ def comment(request):
          comment = request.POST.get('comment')
          user = request.user
          postno  =  request.POST.get('Sno')
-         post = blogs.objects.get(id = postno)
+         post = Blogs.objects.get(id = postno)
          comment = blogpostComment(comments= comment, user= user, post= post)
          comment.save()
     return redirect(f'/blog/{post.slug}')
