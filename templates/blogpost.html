@@ -221,7 +221,7 @@
 
 <div  class="commentab">
  <h1 class="commentTitle">Comments ({{comment.count | default:"0"}})</h1>
-<form action="/blogs/comment/" method="post">
+<form action="/blog/comment/" method="post">
   {% csrf_token %}
   <input type="text" class="comment" placeholder="Comment" name="comment">
   <input type="hidden" name="Sno" value="{{posts.post_id}}">
