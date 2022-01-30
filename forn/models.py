@@ -2,12 +2,13 @@ from django.db import models
 from django.db.models.fields import CharField
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from tinymce.models import HTMLField
 
 # Create your models here.
 class blogs(models.Model):
     date = models.DateTimeField( auto_now_add=True)
     title = models.CharField(max_length= 150)
-    content = models.TextField()
+    content = HTMLField()
     slug = models.CharField(max_length=50)
     def __str__(self):
         return self.title
@@ -22,16 +23,18 @@ class blogpostComment(models.Model):
     def __str__(self):
         return self.comments[0:15] + "....."  + ' by ' + self.user.username
 
-class contactUs(models.Model):
+class Contact(models.Model):
+    sno = models.AutoField(primary_key=True)
     firstName = models.CharField(max_length=150)
     lastName = models.CharField(max_length=150)
     email = models.EmailField(max_length=254)
-    mobile = models.IntegerField()
+    mobile = models.CharField(max_length=150)
     message = models.TextField()
+    time = models.DateTimeField(default= now)
     def __str__(self):
         return self.firstName
 
         
-class contactMe(models.Model):
+class ContactMe(models.Model):
     gmail = models.EmailField(max_length=254)
     message = models.TextField()

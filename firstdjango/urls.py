@@ -22,7 +22,8 @@ admin.site.site_title = "Ayush blogs"
 admin.site.index_title = "Welcome to ayush blogs admin panel"
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include('forn.urls') )
+    path("", include('forn.urls') ),
+     path('tinymce/', include('tinymce.urls')),
 ]
 
 handler404 = 'forn.views.error_404'

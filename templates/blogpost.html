@@ -1,40 +1,312 @@
 {% extends 'base.html' %}
 {% block title %}Blogpost{% endblock title %}
 {% block metaDescription %}{{post.content}}{% endblock metaDescription %}
+{% block style %}
+<style>
+
+#fixed-social {
+  position: fixed;
+  top: 130px;
+  z-index: 99;
+}
+
+#fixed-social a {
+  color: #fff;
+  display: block;
+  height: 40px;
+  position: relative;
+  text-align: center;
+   line-height: 40px;
+  width: 40px;
+  margin-bottom: 1px;
+  z-index: 2;
+}
+#fixed-social a:hover>span{
+ visibility: visible;
+ left: 41px;
+ opacity: 1;
+} 
+#fixed-social a span {
+ line-height: 40px;
+   left: 60px;
+   position: absolute;
+   text-align: center;
+   width: 120px;
+   visibility: hidden;
+   transition-duration: 0.5s;
+   z-index: 1;
+   opacity: 0;
+}
+.fixed-facebook{
+  background-color: #00AAE5;
+}
+.fixed-facebook span{
+ background-color: #00AAE5;
+}
+.fixed-twitter{
+ background-color: #7D3895;
+
+}
+.fixed-twitter span{
+  background-color: #7D3895;
+}
+.fixed-gplus{
+ background-color:  #ED2B29;
+
+}
+.fixed-gplus span{
+  background-color: #ED2B29;
+}
+.fixed-linkedin{
+ background-color: #FFC41E;
+
+}
+.fixed-linkedin span{
+  background-color: #FFC41E;
+}
+.fixed-instagrem{
+ background-color: #00AF54;
+
+}
+.fixed-instagrem span{
+  background-color: #00AF54;
+}
+
+.svg-inline--fa {
+    vertical-align: -0.200em;
+  }
+  
+  .rounded-social-buttons {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    right: 65px;
+    color: var(--pText);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .rounded-social-buttons .social-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 3.125rem;
+    height: 3.125rem;
+    border: 0.125rem solid transparent;
+    padding: 0;
+    text-decoration: none;
+    text-align: center;
+    color: #fefefe;
+    font-size: 1.5625rem;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 1.6875rem;
+    transition: all 0.5s ease;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
+    -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  
+  .rounded-social-buttons .fa-twitter, .fa-facebook-f, .fa-linkedin, .fa-youtube, .fa-instagram {
+    font-size: 25px;
+  }
+  
+  .rounded-social-buttons .social-button.facebook {
+    background: #3b5998;
+  }
+  
+  .rounded-social-buttons .social-button.facebook:hover, .rounded-social-buttons .social-button.facebook:focus {
+    color: #3b5998;
+    background: #fefefe;
+    border-color: #3b5998;
+  }
+  
+  .rounded-social-buttons .social-button.twitter {
+    background: #55acee;
+  }
+  
+  .rounded-social-buttons .social-button.twitter:hover, .rounded-social-buttons .social-button.twitter:focus {
+    color: #55acee;
+    background: #fefefe;
+    border-color: #55acee;
+  }
+  
+  .rounded-social-buttons .social-button.linkedin {
+    background: #007bb5;
+  }
+  
+  .rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
+    color: #007bb5;
+    background: #fefefe;
+    border-color: #007bb5;
+  }
+  
+  .rounded-social-buttons .social-button.youtube {
+    background: #bb0000;
+  }
+  
+  .rounded-social-buttons .social-button.youtube:hover, .rounded-social-buttons .social-button.youtube:focus {
+    color: #bb0000;
+    background: #fefefe;
+    border-color: #bb0000;
+  }
+  
+  .rounded-social-buttons .social-button.instagram {
+    background: #125688;
+  }
+  
+  .rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
+    color: #125688;
+    background: #fefefe;
+    border-color: #125688;
+  }
+
+</style>
+{% endblock style %}
 {% block body %}
 {% load humanize %}
-<h1 class="blogsHeading">{{post.title}}</h1>
-<div class="blogpost">
-    <p>{{post.date}}</p>
-    <p class="blogpostContent">{{post.content}}</p>
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fab fa-whatsapp"></i> <span>Whatsapp</span></a>
+  </div>
 </div>
-<h1 class="commentTitle">Comments ({{comment.count | default:"0"}})</h1>
-<form action="/blog/comment/" method="post">
-    {% csrf_token %}
-    <input type="text" class="comment" placeholder="Comment" name="comment">
-    <input type="hidden" name="Sno" value="{{post.id}}">
-    <button type="submit" class="commentSubmit">Post</button>
+<div id="progress">
+  <span id="progress-value">
+      <i class="fas fa-arrow-up"></i>
+  </span>
+</div>
+<div class="postArea">
+<div class="blogpost">
+  {{posts.content | safe}}
+</div>
+<div class="relatedpost">
+    <h1>Related posts</h1>
+    {% for related in relatedpost %}
+    <div class="rPost">
+     <h3>{{related.title}}</h3>
+     <button><a href="/blogs/{{related.url}}">Read more</a></button>
+    </div>
+    {% endfor %}
+  </div>
+ <div class="follow">
+ <div class="rounded-social-buttons">
+   <h1>Follow us on</h1>
+  <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+  <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+</div>
+
+
+
+
+<div  class="commentab">
+ <h1 class="commentTitle">Comments ({{comment.count | default:"0"}})</h1>
+<form action="/blogs/comment/" method="post">
+  {% csrf_token %}
+  <input type="text" class="comment" placeholder="Comment" name="comment">
+  <input type="hidden" name="Sno" value="{{posts.post_id}}">
+  <button type="submit" class="commentSubmit">Post</button>
 </form>
 <div class="commentsection">
-    {% for comments in comment reversed%}
+  {% for comments in comment reversed%}
 
-    <div class="commentBox">
-        <div class="commentHead">
-            <div>
-                <img src="https://i.postimg.cc/FsWkPPFp/avatardefault-92824.png" alt="user img">
-            </div>
-            <div class="userDetails">
-                <p>{{comments.user.username}}</p> 
-                <p>{{comments.timestamp | naturaltime}}</p>
+  <div class="commentBox">
+      <div class="commentHead">
+          <div>
+              <img src="https://i.postimg.cc/FsWkPPFp/avatardefault-92824.png" alt="user img">
+          </div>
+          <div class="userDetails">
+              <p>{{comments.user.username}}</p> 
+              <p>{{comments.timestamp | naturaltime}}</p>
 
-            </div>
-        </div>
-        <div>
-            {{comments.comments}}
+          </div>
+      </div>
+      <div>
+          {{comments.comments}}
 
-        </div>
+      </div>
 
-    </div> 
-    {% endfor %}
+  </div> 
+  {% endfor %}
 </div>
+</div>
+<div class="relatedpostmob">
+    <h1>Related posts</h1>
+    {% for related in relatedpost %}
+    <div class="rPost">
+     <h3>{{related.title}}</h3>
+     <button><a href="/blogs/{{related.url}}">Read more</a></button>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock body %}
+{% block script %}
+<script>
+  let calcScrollValue = () => {
+    let scrollProgess = document.getElementById("progress");
+    let progressValue = document.getElementById("progress-value");
+
+    let pos = document.documentElement.scrollTop;
+    let calcHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    let scrollValue = Math.round((pos * 100) / calcHeight);
+
+    scrollProgess.style.background = `conic-gradient(#03CC65 ${scrollValue}%, #111 ${scrollValue}%)`;
+
+    if (pos > 100) {
+      scrollProgess.style.display = "grid";
+    } else {
+      scrollProgess.style.display = "none";
+    }
+    scrollProgess.addEventListener("click", () => {
+      document.documentElement.scrollTop = 0;
+    });
+  };
+  window.onscroll = calcScrollValue;
+  window.onload = calcScrollValue;
+
+
+  const fb = document.querySelector('.fixed-facebook');
+  const twitter = document.querySelector('.fixed-twitter');
+  const google = document.querySelector('.fixed-gplus');
+  const linkedin = document.querySelector('.fixed-linkedin');
+  const insta = document.querySelector('.fixed-instagrem');
+
+  function init(){
+    let postUrl = encodeURI(document.location.href);
+    let postTitle = encodeURI("{{posts.title}}");
+    fb.setAttribute('href',`https://www.facebook.com/sharer.php?u=${postUrl}
+` );
+    twitter.setAttribute('href',`
+https://twitter.com/share?url=${postUrl}&text=${postTitle}
+` );
+    google.setAttribute('href', `https://plus.google.com/share?url=${postUrl}
+` );
+    linkedin.setAttribute('href',`https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}
+` );
+    insta.setAttribute('href', `https://wa.me/?text=${postTitle}  ${postUrl}`);
+  }
+  init()
+</script>
+{% endblock script %}

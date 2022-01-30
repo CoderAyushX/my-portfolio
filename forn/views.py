@@ -9,9 +9,9 @@ def index(request):
 def contactMe(request):
     try:
       if request.method == "POST":
-        gmails = request.POST.get('gmail')
-        messages = request.POST.get('message')
-        contactme = contactMe(gmail= gmails,  message= messages)
+        gmails = request.POST['gmail']
+        messages = request.POST['message']
+        contactme = ContactMe(gmail= gmails,  message= messages)
         contactme.save()
         return redirect('/')
     except:
@@ -24,7 +24,7 @@ def contact(request):
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
         message = request.POST.get('message')
-        contact = contactUs(firstName = Fname , lastName = Lname, email = email , mobile = mobile, message = message)
+        contact = Contact(firstName= Fname , lastName= Lname, email= email , mobile= mobile, message= message)
         contact.save()
         messages.info(request,"Message sent sucessfully")
     return render(request, 'contact.html')
@@ -80,7 +80,7 @@ def logout(request):
 def blogpost(request, slug):
     post = blogs.objects.filter(slug= slug).first()
     comments = blogpostComment.objects.filter(post = post)
-    return render(request, 'blogpost.html', {'post':post, 'comment': comments})
+    return render(request, 'blogpost.html', {'posts':post, 'comment': comments})
 
 def comment(request):
     if request.user.is_anonymous:

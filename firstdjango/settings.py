@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-dkf7^svt6sgo@+%@o&&gwn%zcpo_d%)i$)=qa(2^*fn@mtjiow
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'ayushblog.herokuapp.com',
-    'localhost',
+    '*'
 ]
 
 
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
