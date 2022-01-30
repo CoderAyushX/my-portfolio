@@ -361,7 +361,7 @@ li{
   height: 100%;
   aspect-ratio: 16 / 9 ;
   object-fit: contain;
-  margin: 40px 0;
+  margin: 35px 0;
 }
 .blogpost p, .blogpost li {
   letter-spacing: 1px;
