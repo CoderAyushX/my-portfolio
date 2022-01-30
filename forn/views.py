@@ -80,7 +80,8 @@ def logout(request):
 def blogpost(request, slug):
     post = blogs.objects.filter(slug= slug).first()
     comments = blogpostComment.objects.filter(post = post)
-    return render(request, 'blogpost.html', {'posts':post, 'comment': comments})
+    relatedPost = blogs.objects.all().exclude(post_id= post.id)[:4]
+    return render(request, 'blogpost.html', {'posts':post, 'comment': comments, 'relatedpost': relatedPost})
 
 def comment(request):
     if request.user.is_anonymous:
