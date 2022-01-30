@@ -8,6 +8,7 @@ from tinymce.models import HTMLField
 class blogs(models.Model):
     date = models.DateTimeField( auto_now_add=True)
     title = models.CharField(max_length= 150)
+    review_content = models.TextField()
     content = HTMLField()
     slug = models.CharField(max_length=50)
     def __str__(self):
