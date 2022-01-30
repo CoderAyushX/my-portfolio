@@ -200,7 +200,7 @@
     {% for related in relatedpost %}
     <div class="rPost">
      <h3>{{related.title}}</h3>
-     <button><a href="/blogs/{{related.url}}">Read more</a></button>
+     <button><a href="/blogs/{{related.slug}}">Read more</a></button>
     </div>
     {% endfor %}
   </div>
@@ -255,7 +255,7 @@
     {% for related in relatedpost %}
     <div class="rPost">
      <h3>{{related.title}}</h3>
-     <button><a href="/blogs/{{related.url}}">Read more</a></button>
+     <button><a href="/blogs/{{related.slug}}">Read more</a></button>
     </div>
     {% endfor %}
   </div>
