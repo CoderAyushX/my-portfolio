@@ -7,7 +7,7 @@
 <div class="blog">
     <p> {{blog.date}}</p>
     <h1>{{blog.title}}</h1>
-    <p>{{blog.review_content | truncatechars:250 | safe}}</p>
+    <p>{{blog.content | truncatechars:250 | safe}}</p>
     <p ><a class="blogreadmore" href="/blog/{{blog.slug}}/">read more</a></p>
 </div>
 {% endfor %}
