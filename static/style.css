@@ -341,6 +341,9 @@ li{
   font-size: 14px;
   padding-top: 8px;
 }
+.blog img{
+  display: none;
+}
 .blogreadmore{
   padding-top: 8px;
   color: #4f47e4;
