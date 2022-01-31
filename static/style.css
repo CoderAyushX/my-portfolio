@@ -746,15 +746,6 @@ footer{
       display: none;
     }
   }
-  @media screen and (max-width: 580px){
-    .navItems{
-     transform: translateX(-305px);
-
-    }
-    .show{
-     transform: translateX(0px);
-    }
-  }
   @media screen and (max-width: 900px) {
     .relatedpostmob{
       display: flex;
@@ -895,6 +886,15 @@ footer{
     }
     #progress-value {
       font-size: 20px;
+    }
+  }
+  @media screen and (max-width: 620px){
+    .navItems{
+     transform: translateX(-305px);
+
+    }
+    .show{
+     transform: translateX(0px);
     }
   }
 
