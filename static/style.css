@@ -730,6 +730,17 @@ footer{
     margin: 20px auto;
     display: none;
   }
+  @media screen and (max-width: 1255px) {
+    .work .worksgrid{
+      grid-template-columns: auto;
+    }
+    .worksgrid div{
+      width: 520px;
+      height: 300px;
+      grid-row-gap:10px ;
+      
+    }
+  }
   @media  screen and (max-width: 1050px) {
     .follow{
       display: none;
@@ -758,7 +769,7 @@ footer{
       right: 0;
       text-align: center;  
      width: 45%;
-     transform: translateX(-305px);
+     transform: translateX(-455px);
      transition: .5s all linear;
      z-index: 99;
 
